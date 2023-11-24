@@ -1,7 +1,9 @@
 package com.ukdw.isaimobile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -13,25 +15,31 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.ukdw.isaimobile.databinding.ActivityMainBinding
+import com.mapbox.mapboxsdk.Mapbox
+import com.mapbox.mapboxsdk.maps.MapView
+import com.ukdw.isaimobile.ui.calculator.CalculatorFragment
 import com.ukdw.isaimobile.ui.graph.GraphFragment
 import com.ukdw.isaimobile.ui.home.HomeFragment
+import com.ukdw.isaimobile.ui.menu.MenuFragment
 
 class MainActivity : AppCompatActivity() {
 
 //    private lateinit var appBarConfiguration: AppBarConfiguration
 //    private lateinit var binding: ActivityMainBinding
-
     private lateinit var bottomNav: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Mapbox.getInstance(applicationContext, R.string.access_token.toString())
+
         setContentView(R.layout.activity_main)
+
         loadFragment(HomeFragment())
         bottomNav = findViewById(R.id.bottomNav)
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> {
+                    bottomNav.visibility = View.VISIBLE
                     loadFragment(HomeFragment())
                     true
                 }
@@ -39,14 +47,15 @@ class MainActivity : AppCompatActivity() {
                     loadFragment(GraphFragment())
                     true
                 }
-//                R.id.calculator -> {
-//                    loadFragment(SettingFragment())
-//                    true
-//                }
-//                R.id.menu -> {
-//                    loadFragment(MenuFragment())
-//                    true
-//                }
+                R.id.calculator -> {
+                    loadFragment(CalculatorFragment())
+                    true
+                }
+                R.id.menu -> {
+                    bottomNav.visibility = View.GONE
+                    loadFragment(MenuFragment())
+                    true
+                }
                 else -> {
                     false
                 }
