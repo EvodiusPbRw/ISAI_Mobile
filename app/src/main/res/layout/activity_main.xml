@@ -2,13 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MainActivity">
-
-
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -16,22 +15,20 @@
         android:layout_above="@+id/bottomNav"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        app:itemBackground="@color/primaryColor"
+        android:background="@color/primaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:itemIconPadding="40dp"
         app:menu="@menu/nav_bottom_menu"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         android:scrollIndicators="left"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
