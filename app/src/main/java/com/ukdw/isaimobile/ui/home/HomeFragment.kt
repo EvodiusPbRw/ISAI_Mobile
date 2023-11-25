@@ -1,15 +1,21 @@
 package com.ukdw.isaimobile.ui.home
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.mapbox.mapboxsdk.maps.MapView
+import androidx.lifecycle.Transformations.map
+import com.mapbox.maps.MapView
+import com.mapbox.maps.Style
+//import com.mapbox.mapboxsdk.Mapbox
+//import com.mapbox.mapboxsdk.maps.MapView
+//import com.mapbox.mapboxsdk.maps.MapboxMap
+//import com.mapbox.mapboxsdk.maps.Style
 import com.ukdw.isaimobile.MainActivity
 import com.ukdw.isaimobile.R
+
 
 class HomeFragment : Fragment() {
     lateinit var activity: MainActivity
@@ -25,7 +31,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         mapView=view.findViewById(R.id.mapView)
-        mapView.onCreate(savedInstanceState)
+        mapView.getMapboxMap().loadStyleUri(Style.MAPBOX_STREETS)
         return view
     }
 }

@@ -11,7 +11,7 @@ import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.mapbox.mapboxsdk.Mapbox
+//import com.mapbox.mapboxsdk.Mapbox
 import com.ukdw.isaimobile.databinding.ActivityMainBinding
 import com.ukdw.isaimobile.ui.calculator.CalculatorFragment
 import com.ukdw.isaimobile.ui.graph.GraphFragment
@@ -19,10 +19,6 @@ import com.ukdw.isaimobile.ui.home.HomeFragment
 import com.ukdw.isaimobile.ui.menu.MenuActivity
 
 class MainActivity : AppCompatActivity() {
-    companion object{
-        const val MENU_REQUEST_CODE = 46172
-    }
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var bottomNav: BottomNavigationView
@@ -47,18 +43,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        Mapbox.getInstance(applicationContext, R.string.access_token.toString())
 
         setContentView(R.layout.activity_main)
-
-//        val intent: Intent = intent;
-//        changedFragment = if(intent.getStringExtra("fragment_name").isNullOrEmpty()) null else intent.getStringExtra("fragment_name").toString()
-//        Log.d("Test", intent.getStringExtra("fragment_name").toString())
-//        changeFragment(changedFragment ?: defaultFragment)
-
-//
-//        changedSelectedItem = intent.getIntExtra("selected_item", defaultSelectedItem)
-//        bottomNav.selectedItemId = changedSelectedItem
 
         changeFragment(defaultFragment)
 
