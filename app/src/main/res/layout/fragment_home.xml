@@ -11,21 +11,23 @@
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        mapbox:mapbox_cameraTargetLat="40.7128"
-        mapbox:mapbox_cameraTargetLng="-74.0060"
-        mapbox:mapbox_cameraZoom="9.0"/>
+        mapbox:mapbox_cameraTargetLat="-7.7714"
+        mapbox:mapbox_cameraTargetLng="110.4137"
+        mapbox:mapbox_cameraZoom="12.0"
+        />
 
-    <androidx.appcompat.widget.SearchView
+    <EditText
         android:id="@+id/idSearch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:iconifiedByDefault="false"
         android:padding="4dp"
-        android:queryHint="Cari Lokasi"
-        android:focusable="false"
-        android:background="@drawable/search_bg" />
+        android:hint="Cari Lokasi"
+        android:drawableLeft="@drawable/baseline_search_24"
+        android:background="@drawable/search_bg"
+        android:drawablePadding="10dp"/>
 </RelativeLayout>
