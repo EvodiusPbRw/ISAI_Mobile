@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'com.ukdw.isaimobile'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.ukdw.isaimobile"
@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.2.0'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'androidx.core:core-ktx:+'
 
 //    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'){
 //        exclude group: 'group_name', module: 'module_name'

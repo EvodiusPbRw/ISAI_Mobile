@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primaryColor">#426899</color>
+    <color name="primaryTextColor">#101012</color>
+    <color name="primaryColor_">#134280</color>
+    <color name="black60">#99000000</color>
     <color name="mapboxWhite">#FFFFFF</color>
     <color name="mapboxBlack">#FF000000</color>
     <color name="item_menu_activity">#D9D9D9</color>
