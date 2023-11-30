@@ -6,16 +6,19 @@ package com.ukdw.isaimobile.ui.home
 //import com.mapbox.mapboxsdk.maps.Style
 
 import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
@@ -50,6 +53,7 @@ class HomeFragment : Fragment() {
     private lateinit var searchClose: LinearLayout
     private var loadLocationCarbonService: LoadLocationCarbonService = object :
         LoadLocationCarbonServiceImpl(){}
+    private lateinit var adapter: SimpleAdapter
 
     private var coordinateMap: Array<String> = arrayOf("January", "February", "March", "April")
     private lateinit var arrayAdapter: ArrayAdapter<String>
@@ -112,7 +116,7 @@ class HomeFragment : Fragment() {
 
 //        arrayAdapter = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, loadLocationCarbonService.loadData().map{ it.area;})
 
-        val adapter = SimpleAdapter(
+        adapter = SimpleAdapter(
             activity, data,
             android.R.layout.simple_list_item_2, arrayOf("title", "subtitle"), intArrayOf(
                 android.R.id.text1,
@@ -123,8 +127,9 @@ class HomeFragment : Fragment() {
 
         listView.onItemClickListener = object: AdapterView.OnItemClickListener{
             override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                (activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(view.windowToken, 0)
                 val cameraPosition = CameraOptions.Builder()
-                    .center(Point.fromLngLat(carbonDatas[p2].longitude, carbonDatas[p2].latitude)).zoom(16.0)
+                    .center(Point.fromLngLat(carbonDatas[p2].longitude, carbonDatas[p2].latitude)).zoom(18.0)
                     .build()
                 mapView.getMapboxMap().setCamera(cameraPosition)
             }
@@ -141,19 +146,25 @@ class HomeFragment : Fragment() {
 
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                arrayAdapter.filter.filter(p0)
+                Log.d("Check", p0!!)
+                adapter.filter.filter(p0)
+//                arrayAdapter.filter.filter(p0)
                 return false
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
+                Log.d("Check", p0!!)
                 listView.visibility = View.VISIBLE
                 searchClose.visibility = View.VISIBLE
-                arrayAdapter.filter.filter(p0)
+//                arrayAdapter.filter.filter(p0)
+                adapter.filter.filter(p0)
                 return false
             }
+
         })
 
         searchClose.setOnClickListener {
+            (activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(view.windowToken, 0)
             searchClose.visibility = View.GONE
             listView.visibility = View.GONE
         }
