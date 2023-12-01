@@ -57,7 +57,7 @@
     </FrameLayout>
 
     <Space
-        android:id="@+id/spaceGuide"
+        android:id="@+id/spaceHelp"
         android:layout_width="wrap_content"
         android:layout_height="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,14 +65,14 @@
         app:layout_constraintTop_toBottomOf="@+id/frameLayoutAbout" />
 
     <FrameLayout
-        android:id="@+id/frameLayoutGuide"
+        android:id="@+id/frameLayoutHelp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spaceGuide"
+        app:layout_constraintTop_toBottomOf="@+id/spaceHelp"
         android:background="@color/item_menu_activity">
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Petunjuk Penggunaan"
+                android:text="Bantuan"
                 android:gravity="center_vertical"
                 android:textSize="18dp"/>
         </LinearLayout>
@@ -107,7 +107,7 @@
         android:layout_height="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayoutGuide" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayoutHelp" />
 
     <FrameLayout
         android:id="@+id/frameLayoutCalculator"

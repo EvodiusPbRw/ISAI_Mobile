@@ -30,7 +30,7 @@ class CalculatorFragment : Fragment() {
             var totalDistance: Double = totalDistanceInput.text.toString().toDouble()
             var factorEmmision: Double = 2.4
             var formula: Double = totalDistance * factorEmmision
-            resultCarbon.text = formula.toString() + " Kg/KM"
+            resultCarbon.text = formula.toString() + " Kg/Km"
         }
 
         return view
