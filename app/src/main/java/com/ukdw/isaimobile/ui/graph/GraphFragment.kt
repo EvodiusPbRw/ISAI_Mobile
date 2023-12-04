@@ -43,6 +43,7 @@ class GraphFragment : Fragment() {
 
         adapter.addFragment(CarbonAbsorbedFragment(), "Karbon Terserap")
         adapter.addFragment(CarbonEmissionFragment(), "Emisi Karbon")
+        adapter.addFragment(HSTValueFragment(), "Nilai HST")
 
         pager.adapter = adapter
         tab.setupWithViewPager(pager)

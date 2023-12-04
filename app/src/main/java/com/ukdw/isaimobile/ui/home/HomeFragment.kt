@@ -11,6 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -114,22 +115,28 @@ class HomeFragment : Fragment() {
         searchBar = view.findViewById(R.id.idSearch)
         listView = view.findViewById(R.id.idListView)
 
-//        arrayAdapter = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, loadLocationCarbonService.loadData().map{ it.area;})
+        arrayAdapter = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, loadLocationCarbonService.loadData().map{ (String.format("%s - %s", it.area, it.sampleCode))})
 
-        adapter = SimpleAdapter(
-            activity, data,
-            android.R.layout.simple_list_item_2, arrayOf("title", "subtitle"), intArrayOf(
-                android.R.id.text1,
-                android.R.id.text2
-            )
-        )
-        listView.adapter = adapter
+//        adapter = SimpleAdapter(
+//            activity, data,
+//            android.R.layout.simple_list_item_2, arrayOf("title", "subtitle"), intArrayOf(
+//                android.R.id.text1,
+//                android.R.id.text2
+//            )
+//        )
+        listView.adapter = arrayAdapter
 
         listView.onItemClickListener = object: AdapterView.OnItemClickListener{
             override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 (activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(view.windowToken, 0)
+                var actualPosition: LocationCarbon? = null
+                for(i in carbonDatas){
+                    if(i.sampleCode == arrayAdapter.getItem(p2)!!.substring( arrayAdapter.getItem(p2)!!.indexOf("-")+2)){
+                        actualPosition = i
+                    }
+                }
                 val cameraPosition = CameraOptions.Builder()
-                    .center(Point.fromLngLat(carbonDatas[p2].longitude, carbonDatas[p2].latitude)).zoom(18.0)
+                    .center(Point.fromLngLat(actualPosition!!.longitude, actualPosition!!.latitude)).zoom(19.0)
                     .build()
                 mapView.getMapboxMap().setCamera(cameraPosition)
             }
@@ -147,8 +154,7 @@ class HomeFragment : Fragment() {
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 Log.d("Check", p0!!)
-                adapter.filter.filter(p0)
-//                arrayAdapter.filter.filter(p0)
+                arrayAdapter.filter.filter(p0)
                 return false
             }
 
@@ -156,8 +162,7 @@ class HomeFragment : Fragment() {
                 Log.d("Check", p0!!)
                 listView.visibility = View.VISIBLE
                 searchClose.visibility = View.VISIBLE
-//                arrayAdapter.filter.filter(p0)
-                adapter.filter.filter(p0)
+                arrayAdapter.filter.filter(p0)
                 return false
             }
 

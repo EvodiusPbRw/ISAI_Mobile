@@ -2,11 +2,14 @@ package com.ukdw.isaimobile.services.Impl
 
 import android.graphics.Color
 import android.graphics.Paint
+import com.github.mikephil.charting.charts.CandleStickChart
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.LegendEntry
 import com.github.mikephil.charting.data.CandleData
 import com.github.mikephil.charting.data.CandleDataSet
 import com.github.mikephil.charting.data.CandleEntry
-import com.ukdw.isaimobile.R
 import com.ukdw.isaimobile.services.CarbonDataChartService
+
 
 open class CarbonDataChartServiceImpl: CarbonDataChartService {
     override fun getXAxisLabel(): ArrayList<String> {
@@ -87,5 +90,17 @@ open class CarbonDataChartServiceImpl: CarbonDataChartService {
         dataSet.valueTextSize = 16F
 
         return data
+    }
+
+    override fun setLegendsCandle(candleStickChart: CandleStickChart) {
+        val l: Legend = candleStickChart.legend
+        l.entries
+        l.yEntrySpace = 200f
+        l.isWordWrapEnabled = true
+        val l1 = LegendEntry("Male", Legend.LegendForm.CIRCLE, 10f, 2f, null, Color.YELLOW)
+        val l2 = LegendEntry("Female", Legend.LegendForm.CIRCLE, 10f, 2f, null, Color.RED)
+        l.setCustom(arrayOf(l1, l2))
+        l.isWordWrapEnabled = true;
+        l.isEnabled = false
     }
 }
