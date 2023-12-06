@@ -29,6 +29,7 @@
         android:orientation="vertical"
         android:padding="12dp">
 
+
 <!--    <TextView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
@@ -41,19 +42,64 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Halo dunia"
+                android:text="Pertanyaan yang sering ditanyakan terkait karbon?"
 
+                android:textAlignment="center"
+                android:textSize="18dp"/>
 
-                android:textSize="14dp"/>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Halo dunia native"
+                android:text="1. Apa yang dimaksud dengan Karbon?"
+                android:textSize="18dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Karbon adalah unsur kimia dengan simbol C, nomor atom 6, dan dapat diserap dari atmosfer melalui fotosintesis dan disimpan di dalam bentuk biomassa suatu vegetasi."
+                android:textSize="18dp"/>
 
-                android:textAlignment="center"
-                android:textSize="14dp"/>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. Apa itu emisi karbon?"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Emisi karbon merupakan proses pelepasan gas-gas yang mengandung karbon ke atmosfer yang terjadi secara alami maupun dipicu aktivitas manusia, seperti deforestasi, konsumsi listrik, hingga kegiatan industri manufaktur."
+                android:textSize="18dp"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3. Apa dampak yang ditimbulkan karbon?"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Positif(+) Sumber Energi Fosil dan Dasar kehidupan sebagai pembentuk molekul organik"
+                android:textSize="18dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Negativ(-) Pemanasan Global, Pencemaran Udara, dan Kerusakan Lingkungan"
+                android:textSize="18dp"/>
 
 
-    </LinearLayout>
 
+        </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
