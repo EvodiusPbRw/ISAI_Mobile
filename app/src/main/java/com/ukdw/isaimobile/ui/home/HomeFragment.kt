@@ -84,7 +84,7 @@ class HomeFragment : Fragment() {
         //Start Setting map
         mapView=view.findViewById(R.id.mapView)
         mapView.getMapboxMap().loadStyleUri(
-            Style.DARK
+            Style.MAPBOX_STREETS
         ) {
             for(i in carbonDatas){
                 addAnnotationToMap(i.longitude, i.latitude, view, i)
