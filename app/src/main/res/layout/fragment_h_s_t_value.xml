@@ -5,11 +5,70 @@
     android:layout_height="match_parent"
     tools:context=".ui.graph.HSTValueFragment"
     android:padding="11dp">
-
-    <com.github.mikephil.charting.charts.BarChart
-        android:layout_marginTop="13dp"
-        android:id="@+id/idBarChart"
+    
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="322dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.github.mikephil.charting.charts.BarChart
+            android:layout_marginTop="13dp"
+            android:id="@+id/idBarChartHST"
+            android:layout_width="match_parent"
+            android:layout_height="322dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hari Setelah Tanam (HST)"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:textColor="@color/primaryTextColor"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_label_chart">
+            <LinearLayout
+                android:layout_width="20dp"
+                android:layout_height="15dp"
+                android:background="@color/carbon_plant_label"/>
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Karbon Tanaman"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:textColor="@color/primaryTextColor"/>
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:layout_width="20dp"
+                android:layout_height="15dp"
+                android:background="@color/carbon_land_label"/>
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Karbon Tanah"
+                android:gravity="center"
+                android:textSize="10dp"
+                android:textColor="@color/primaryTextColor"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>
