@@ -20,4 +20,6 @@
     <color name="carbon_plant_label">#426799</color>
     <color name="carbon_land_label">#98B4D8</color>
     <color name="carbon_env_label">#B8C6D8</color>
+    <color name="filter_stroke">#101012</color>
+    <color name="filter_background_50">#80000000</color>
 </resources>

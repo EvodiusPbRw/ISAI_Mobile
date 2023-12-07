@@ -7,6 +7,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.ArrayAdapter
+import android.widget.ImageButton
+import android.widget.Spinner
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -22,9 +27,9 @@ import com.ukdw.isaimobile.adapter.ViewPagerAdapter
 
 class GraphFragment : Fragment() {
     lateinit var activity: MainActivity
-    private lateinit var pager: ViewPager // creating object of ViewPager
-    private lateinit var tab: TabLayout  // creating object of TabLayout
-    private lateinit var bar: Toolbar    // creating object of ToolBar
+    private lateinit var pager: ViewPager
+    private lateinit var tab: TabLayout
+    private lateinit var bar: Toolbar
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -43,10 +48,51 @@ class GraphFragment : Fragment() {
 
         adapter.addFragment(CarbonAbsorbedFragment(), "Karbon Terserap")
         adapter.addFragment(CarbonEmissionFragment(), "Emisi Karbon")
-        adapter.addFragment(HSTValueFragment(), "Nilai HST")
+        adapter.addFragment(HSTValueFragment(), "Agregat Karbon")
 
         pager.adapter = adapter
         tab.setupWithViewPager(pager)
+
+        val bottomUp: Animation = AnimationUtils.loadAnimation(
+            context,
+            R.anim.animation_bottom_up
+        )
+        val bottomDown: Animation = AnimationUtils.loadAnimation(
+            context,
+            R.anim.animation_bottom_down
+        )
+
+        val spinnerTahun = view.findViewById<Spinner>(R.id.spinnerTahun)
+        val spinnerKarbon = view.findViewById<Spinner>(R.id.spinnerDataKarbon)
+        val spinnerKomoditas = view.findViewById<Spinner>(R.id.spinnerKomoditas)
+
+        spinnerTahun.adapter = ArrayAdapter(activity,
+            android.R.layout.simple_spinner_item, listOf("2023", "2022")
+        )
+
+        spinnerKarbon.adapter = ArrayAdapter(activity,
+            android.R.layout.simple_spinner_item, listOf("Padi", "Cabai")
+        )
+
+        spinnerKomoditas.adapter = ArrayAdapter(activity,
+            android.R.layout.simple_spinner_item, listOf("Klaten", "Yogyakarta")
+        )
+
+        val filterButton = view.findViewById<ImageButton>(R.id.filterButton)
+        val closeFilterButton = view.findViewById<ViewGroup>(R.id.bgFilterButton)
+        val hiddenPanel = view.findViewById(R.id.filterLayout) as ViewGroup
+
+        filterButton.setOnClickListener {
+            filterButton.setImageResource(R.drawable.filter_clicked_icon)
+            hiddenPanel.startAnimation(bottomUp)
+            hiddenPanel.visibility = View.VISIBLE
+        }
+
+        closeFilterButton.setOnClickListener {
+            filterButton.setImageResource(R.drawable.filter_icon)
+            hiddenPanel.startAnimation(bottomDown)
+            hiddenPanel.visibility = View.GONE
+        }
 
         return view
     }

@@ -28,7 +28,7 @@ class HSTValueFragment : Fragment() {
         barChart.clear()
         carbonDataChartService.refreshData()
 
-        carbonDataChartService.setDataBarChart(3, "HST")
+        carbonDataChartService.setDataBarChart(12, "HST")
         barChart.data = carbonDataChartService.loadDataBarChart(barChart, 0.65f, 0.01f, 0.16F, "HST")
         barChart.description.isEnabled = false
         barChart.legend.isEnabled = false
@@ -37,12 +37,12 @@ class HSTValueFragment : Fragment() {
         xAxis.textSize = 12F
         xAxis.valueFormatter = object : ValueFormatter(){
             override fun getFormattedValue(value: Float): String {
-                return carbonDataChartService.getXAxisBarLabel()[value.toInt()]
+                return carbonDataChartService.getXAxisLabel()[value.toInt()]
             }
         }
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.setDrawGridLines(true)
-        xAxis.labelCount = 3
+        xAxis.labelCount = 12
         xAxis.setCenterAxisLabels(false)
 
         val yAxisRight: YAxis = barChart.axisRight

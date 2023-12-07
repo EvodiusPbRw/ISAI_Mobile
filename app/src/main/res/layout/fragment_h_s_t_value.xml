@@ -18,17 +18,6 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="24dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hari Setelah Tanam (HST)"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="12dp"
-            android:textColor="@color/primaryTextColor"/>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="39dp"
